@@ -1,0 +1,116 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+
+}
+
+.expanded-menu {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 250px;
+    min-height: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.compact-menu {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.menu-item {
+    flex: 0 0 auto;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
+}
+
+.menu-label {
+    white-space: nowrap;
+}
+
+.menu-item:hover {
+    background-color: #202020;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.recent-chats {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scrollbar-width: thin;
+    scrollbar-color: #3e3e3e transparent;
+}
+
+/* Chrome, Edge, Safari */
+.recent-chats::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-chats::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.recent-chats::-webkit-scrollbar-thumb {
+    background: #777777;
+    border-radius: 10px;
+}
+
+.recent-chat {
+    flex: 0 0 auto;
+    min-width: 0;
+    box-sizing: border-box;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    padding: 5px;
+    padding-left: 35px;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.recent-chat:hover {
+    background-color: #202020;
+    border-radius: 7px;
+    cursor: pointer;
+}

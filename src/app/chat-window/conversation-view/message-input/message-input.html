@@ -1,0 +1,18 @@
+<section class="chat-input-container">
+    <span [hidden]="!modelLoading()">Loading model: {{modelProgressReport().progress * 100}}%.</span>
+    
+    <div class="chat-input-area">
+        <div class="chat-input-textarea"  spellcheck="false">
+            <textarea [(ngModel)]="messageContent" rows="1" 
+            placeholder="Ask Browser Chat..."
+            (input)="autoResizeTextArea($event)"
+            (keydown.enter)="onEnterClicked($event)"></textarea>
+        </div>
+
+        <div class="chat-input-button">
+            <button type="button" aria-label="Send message"
+            [disabled]="!messageContent.trim()"
+            (click)="onSendMessageClicked()"> ➤ </button>
+        </div>
+    </div>
+</section>

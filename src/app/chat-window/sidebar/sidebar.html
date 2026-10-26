@@ -1,0 +1,58 @@
+<aside class="sidebar" [class.collapsed]="sidebarState.isMenuExpanded()">
+
+    <!-- Expanded sidebar -->
+    @if (sidebarState.isMenuExpanded()) {
+    <div class="expanded-menu">
+        <div class="menu-item">
+            <span class="menu-icon" (click)="onNewChatMenuClicked()">
+                <svg data-p-icon="pen-to-square" [size]="18"></svg>
+            </span>
+            <span class="menu-label">New chat</span>
+        </div>
+        <div class="menu-item">
+            <span class="menu-icon" (click)="onRecentChatsMenuClicked()">
+                <svg data-p-icon="history" [size]="18"></svg>
+            </span>
+            <span class="menu-label">Recent chats</span>
+        </div>
+        <div class="recent-chats">
+            @for (chat of chatsSignal(); track chat.id) {
+            <div class="recent-chat" 
+                (click)="onRecentChatClicked(chat.id)">
+                {{chat.title}}
+            </div>
+            }
+        </div>
+        <div class="menu-item">
+            <span class="menu-icon" (click)="onSettingsMenuClicked()">
+                <svg data-p-icon="cog" [size]="18"></svg>
+            </span>
+            <span class="menu-label">Settings</span>
+        </div>
+    </div>
+    }
+
+    @else {
+    <!-- Collapsed menubar -->
+    <div class="compact-menu">
+        <div class="menu-item">
+            <span class="menu-icon">
+                <svg data-p-icon="pen-to-square" [size]="18"></svg>
+            </span>
+        </div>
+        <div class="menu-item">
+            <span class="menu-icon">
+                <svg data-p-icon="history" [size]="18"></svg>
+            </span>
+        </div>
+        <div class="recent-chats">
+        </div>
+        <div class="menu-item">
+            <span class="menu-icon">
+                <svg data-p-icon="cog" [size]="18"></svg>
+            </span>
+        </div>
+    </div>
+    }
+
+</aside>

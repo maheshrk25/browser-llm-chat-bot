@@ -17,6 +17,11 @@
     "@angular/forms": "^22.1.0",
     "@angular/platform-browser": "^22.1.0",
     "@angular/router": "^22.1.0",
+    "@mlc-ai/web-llm": "^0.2.86",
+    "@primeicons/angular": "^8.0.2",
+    "dexie": "^4.4.7",
+    "dompurify": "^3.4.17",
+    "marked": "^18.1.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
