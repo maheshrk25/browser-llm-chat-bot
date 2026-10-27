@@ -34,7 +34,7 @@ db.version(1).stores({
 // Populate with sample data on first run
 db.on('populate', async () => {
     const chatId = await db.chats.add({
-        title: 'First test chat with long title',
+        title: 'First chat',
         creationDate: new Date(), 
         isActive: true
     });

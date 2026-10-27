@@ -15,6 +15,7 @@
 
     }
 
-    <span [hidden]="!modelGeneratingSignal()">{{modelReplySignal()}}</span>
+    <span [hidden]="!modelGeneratingSignal()" class="assistant-message-stream">
+        {{modelReplySignal()}}</span>
 </section>
 <app-message-input></app-message-input>

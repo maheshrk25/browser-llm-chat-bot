@@ -5,6 +5,13 @@
     margin-bottom: 20px;
 }
 
+.model-loading-indicator {
+    max-width: 780px;
+    padding: 10px;
+    padding-left: 30px; 
+}
+
+
 .chat-input-area {
     display: flex;
     gap: 15px;

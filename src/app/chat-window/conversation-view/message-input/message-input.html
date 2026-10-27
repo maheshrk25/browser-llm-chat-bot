@@ -1,5 +1,7 @@
 <section class="chat-input-container">
-    <span [hidden]="!modelLoading()">Loading model: {{modelProgressReport().progress * 100}}%.</span>
+    <span [hidden]="!modelLoading()" class="model-loading-indicator">
+        Loading model: {{modelProgressReport().progress * 100}}%.
+    </span>
     
     <div class="chat-input-area">
         <div class="chat-input-textarea"  spellcheck="false">

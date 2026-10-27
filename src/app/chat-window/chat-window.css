@@ -19,6 +19,7 @@ app-sidebar {
   flex: 0 0 auto;
   min-height: 0;
   overflow: hidden;
+  border-right: 1px solid #2A2A2A;
 }
 
 app-conversation-view {
