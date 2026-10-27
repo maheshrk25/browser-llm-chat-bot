@@ -3,6 +3,7 @@ import Dexie, { type EntityTable } from 'dexie';
 export interface Chat {
     id: number,
     title: string,
+    creationDate: Date,
     isActive: boolean
 }
 
@@ -20,20 +21,22 @@ export interface MessageDTO {
     content: string
 }
 
-const db = new Dexie('LocalLLMChatbot') as Dexie & {
+const db = new Dexie('BrowserLLMChatbot') as Dexie & {
     chats: EntityTable<Chat, 'id'>;
     messages: EntityTable<Message, 'id'>;
 };
 
 db.version(1).stores({
-    chats: '++id',
+    chats: '++id, creationDate',
     messages: '++id, chatId',
 });
 
 // Populate with sample data on first run
 db.on('populate', async () => {
     const chatId = await db.chats.add({
-        title: 'First test chat', isActive: true
+        title: 'First test chat with long title',
+        creationDate: new Date(), 
+        isActive: true
     });
     await db.messages.bulkAdd([
         {

@@ -98,19 +98,201 @@
     min-width: 0;
     box-sizing: border-box;
 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
 
     padding: 5px;
-    padding-left: 35px;
+    padding-left: 10px;
     padding-right: 10px;
-    margin-left: 10px;
+    margin-left: 35px;
     margin-right: 10px;
+}
+
+.recent-chat.active {
+    font-weight: 600;
+}
+
+.recent-chat.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 50%;
+    width: 3px;
+    border-radius: 1px;
+    background-color: #2563eb;
 }
 
 .recent-chat:hover {
     background-color: #202020;
     border-radius: 7px;
     cursor: pointer;
+}
+
+.chat-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 1;
+}
+
+.chat-options {
+    position: absolute;
+    right: 0px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: inherit;
+    border-radius: 6px;
+}
+
+.rename-btn {
+    display: flex;
+    align-content: center;
+    border: none;
+    border-radius: 6px;
+    padding: 5px;
+    background: inherit;
+    color: #2563eb;
+    cursor: pointer;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease;
+}
+
+.delete-btn {
+    display: flex;
+    align-content: center;
+    border: none;
+    border-radius: 6px;
+    padding: 5px;
+    background: inherit;
+    color: #b83333;
+    cursor: pointer;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease;
+}
+
+.recent-chat:hover .rename-btn,
+.recent-chat:focus-within .rename-btn,
+.recent-chat:hover .delete-btn,
+.recent-chat:focus-within .delete-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.rename-btn:hover,
+.delete-btn:hover {
+    background: #e5e5e5;
+}
+
+.dialog-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.dialog {
+    width: min(400px, calc(100% - 32px));
+    padding: 24px;
+    border-radius: 12px;
+    background: #202020;
+    color: #f3f4f6;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-30%);
+}
+
+.dialog h3 {
+    margin: 0 0 12px;
+    font-size: 18px;
+}
+
+.dialog p {
+    color: #f3f4f6;
+    line-height: 1.5;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 24px;
+}
+
+.dialog-actions button {
+    padding: 9px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #374151;
+    color: #f3f4f6;
+}
+
+.cancel-btn:hover {
+    background: #2d3441;
+    color: #f3f4f6;
+}
+
+.confirm-delete-btn {
+    background: #dc2626;
+    color: #f3f4f6;
+}
+
+.confirm-delete-btn:hover {
+    background: #b91c1c;
+}
+
+.dialog input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 12px 0 16px;
+    background: #050505;
+    color: azure;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-family: inherit;
+}
+
+.save-btn {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2563eb;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.save-btn:hover:not(:disabled) {
+    background-color: #1d4ed8;
+}
+
+.save-btn:active:not(:disabled) {
+    background-color: #1e40af;
+}
+
+.save-btn:disabled {
+    background-color: #93aeea;
+    opacity: 0.7;
 }

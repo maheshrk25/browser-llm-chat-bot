@@ -10,14 +10,7 @@ export class MessageDataStore {
 
     chatsDataStore = inject(ChatDataStore)
     activeChatIdSignal = computed(() => this.chatsDataStore.activeChatSignal()?.id);
-    
-    /*
-    activeChatMessagesSignal = toSignal(
-        from(liveQuery(() =>
-            db.messages.where({ chatId: this.activeChatIdSignal() }).toArray()
-        )),
-        { initialValue: [] as Message[] }
-    );*/
+
     activeChatMessagesSignal = toSignal(
         toObservable(this.activeChatIdSignal).pipe(
             switchMap(chatId => {
@@ -43,6 +36,27 @@ export class MessageDataStore {
             role: message.role,
             content: message.content
         });
+    }
+
+    async addInitialMessages(chatId: number) {
+        await db.messages.bulkAdd([
+            {
+                chatId: chatId,
+                datetime: new Date(),
+                role: "system",
+                content: "You are a helpful AI assistant."
+            },
+            {
+                chatId: chatId,
+                datetime: new Date(),
+                role: "assistant",
+                content: "<p>Hi. How can I help you today?</p>"
+            }
+        ]);
+    }
+
+    async deleteMessagesInChat(chatId: number): Promise<void> {
+        
     }
 
 }
